@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <title>Mortgage repayment calculator</title>
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <section>
+      <main class="calculator-container">
+        <figure class="form-section">
+          <figcaption class="mortage-header">
+            <h3>Mortage Calculator</h3>
+            <button class="mortage-header-btn">clear all</button>
+          </figcaption>
+
+          <div class="form-group">
+            <div class="form-control">
+              <label for="amount">Mortage Amount</label>
+              <div class="form-control-group static-border">
+                <div class="form-control-group-icon static-bg">
+                  <i class="fa-solid fa-sterling-sign"></i>
+                </div>
+                <input type="text" id="amount" />
+              </div>
+            </div>
+
+            <!-- term field -->
+            <div class="term-field-wrapper">
+              <div class="form-control">
+                <label for="amount">Mortage Amount</label>
+                <div class="form-control-group static-border">
+                  <input type="text" id="amount" />
+                  <div class="form-control-group-icon static-bg">
+                    <p>years</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-control">
+                <label for="amount">Mortage Amount</label>
+                <div class="form-control-group static-border">
+                  <input type="text" id="amount" />
+                  <div class="form-control-group-icon static-bg">
+                    <i class="fa-solid fa-percent"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- mortage type -->
+
+            <div class="mortage-type-wrapper">
+              <label for="">Mortage Type</label>
+              <div class="repayment-type">
+                <input type="radio">
+              </div>
+              <div class="interest-only"></div>
+            </div>
+          </div>
+        </figure>
+
+        <figure class="results-section">
+          <figcaption>Repayment Schedule</figcaption>
+        </figure>
+      </main>
+    </section>
+  </body>
+</html>
