@@ -30,6 +30,10 @@
   background-color: var(--lime) !important;
 }
 
+.active-bg-payment {
+  background-color: hsl(61, 81%, 90%) !important;
+}
+
 .active-border {
   border: 2px solid var(--lime) !important;
 }
@@ -40,6 +44,10 @@
 
 .error-border {
   border: 2px solid var(--red) !important;
+}
+
+.hidden {
+  display: none !important;
 }
 
 label {
@@ -67,6 +75,7 @@ section {
   border-radius: 12px;
   box-shadow: -1px 8px 13px 6px rgba(24, 134, 219, 0.2);  overflow: hidden;
   font-weight: 500;
+  background-color: white;
 }
 
 input {
@@ -144,6 +153,7 @@ input:focus-within {
   justify-content: center;
   border-radius: 5px 0 0 5px;
   padding: 2px 5px;
+  color: var(--slate-700);
 } 
 
 .term-field-wrapper {
@@ -156,18 +166,135 @@ input:focus-within {
   margin: 20px 0;
 }
 
+.repayment-type {
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+  border-radius: 5px;
+  padding: 2px 10px;
+  margin-bottom: 10px;
+}
+
+.repayment-type input{
+  display: none;
+}
+
+.checkbox {
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  border: 2px solid var(--slate-500);
+  cursor: pointer;
+}
+
+.active-checkbox {
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  border: 2px solid var(--lime);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.checkbox-circle {
+  height: 13px;
+  width: 13px;
+  cursor: pointer;
+  padding: 1px;
+  border-radius: 100%;
+  left: 0.3px;
+  bottom: 0.2px;
+  position: relative;
+}
+
+.type-label {
+  font-size: 14px;
+  color: var(--slate-700);
+  margin-left: 10px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.calculate-repayments {
+  max-width: 270px;
+  width: 100%;
+  border-radius: 30px;
+  border: none;
+  background-color: var(--lime);
+  height: 50px;
+  font-size: 14px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
 /* /Mortage input field */
 
+
+/* RESULT SECTION STARTED */
+
 .results-section {
-  background-color: #082539;
+  background-color: var(--slate-900);
   color: #ffffff;
+
+  padding: 24px;
+  border-radius: 0 0 0 80px;
+  min-height: 400px;
+}
+
+.static-result-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  border-radius: 0 0 0 80px;
 }
+
+.result-title {
+  font-size: 22px;
+  font-weight: 700;
+} 
+
+.result-subtitle {
+  color: var(--slate-500);
+  font-size: 14px;
+  margin-top:19px;
+}
+
+.result-card {
+  width: 100%;
+  background-color: hsl(201, 67%, 8%);
+  min-height: 100px;
+  padding:19px 15px;
+  margin: 28px 0;
+  border-radius: 5px;
+  border-top: 3px solid var(--lime);
+}
+
+.monthly-repayment {
+  border-bottom: 1px solid var(--slate-500);
+}
+
+.monthly-price {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 10px 0;
+  color: var(--lime)  ;
+}
+
+.total-price {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+/* RESULT SECTION ENDED */
+
+
+
+
 
 @media (max-width: 767px) {
   .calculator-container {

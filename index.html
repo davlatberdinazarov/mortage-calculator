@@ -67,16 +67,72 @@
 
             <div class="mortage-type-wrapper">
               <label for="">Mortage Type</label>
-              <div class="repayment-type">
-                <input type="radio">
+              <div class="repayment-type active-border active-bg-payment">
+                <!-- <div class="checkbox active-bg">
+                  <input type="radio">
+                </div> -->
+                <div class="active-checkbox">
+                  <div class="checkbox-circle active-bg"></div>
+                  <input type="radio" />
+                </div>
+                <label class="type-label" for="repayment">Repayment</label>
+              </div>
+              <div class="repayment-type active-border">
+                <div class="checkbox">
+                  <input type="radio" />
+                </div>
+                <label class="type-label" for="repayment">Interest Only</label>
               </div>
               <div class="interest-only"></div>
+            </div>
+
+            <div>
+              <button class="calculate-repayments">
+                <i class="fa-solid fa-calculator"></i>
+                Calculate Repayments
+              </button>
             </div>
           </div>
         </figure>
 
         <figure class="results-section">
-          <figcaption>Repayment Schedule</figcaption>
+          <figcaption class="static-result-section hidden">
+            <div class="result-showcase">
+              <img
+                class="result-img"
+                src="./assets/images/illustration-empty.svg"
+                alt="empyt calc"
+              />
+
+              <h2 class="result-title">Result shown here</h2>
+
+              <p class="result-subtitle">
+                Complate the form end click "calculate repayments" to see what
+                your monthly repayment would be
+              </p>
+            </div>
+          </figcaption>
+
+          <figcaption>
+            <h2 class="result-title">Your results</h2>
+            <p class="result-subtitle">
+              Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Minus nobis vel assumenda architecto quidem
+              placeat? consectetur, adipisicing elit. Laboriosam hic dicta
+              totam! Lorem, ipsum dolor.
+            </p>
+
+            <div class="result-card">
+              <div class="monthly-repayment">
+                <p class="result-subtitle">Your monthly repayments</p>
+                <h2 class="monthly-price">£ 234235</h2>
+              </div>
+              <div class="">
+                <p class="result-subtitle">Your monthly repayments</p>
+                <h2 class="total-price">£ 234235</h2>
+              </div>
+            </div>
+          </figcaption>
         </figure>
       </main>
     </section>
