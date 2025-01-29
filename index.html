@@ -25,69 +25,84 @@
       <main class="calculator-container">
         <figure class="form-section">
           <figcaption class="mortage-header">
-            <h3>Mortage Calculator</h3>
+            <h3>Mortgage Calculator</h3>
             <button class="mortage-header-btn">clear all</button>
           </figcaption>
 
           <div class="form-group">
-            <div class="form-control">
-              <label for="amount">Mortage Amount</label>
+            <div id="amount-wrapper" class="form-control">
+              <label for="amount">Mortgage Amount</label>
               <div class="form-control-group static-border">
                 <div class="form-control-group-icon static-bg">
                   <i class="fa-solid fa-sterling-sign"></i>
                 </div>
                 <input type="text" id="amount" />
               </div>
+              <!-- error stage -->
+              <p class="error-message hidden">This field is required</p>
             </div>
 
             <!-- term field -->
             <div class="term-field-wrapper">
-              <div class="form-control">
-                <label for="amount">Mortage Amount</label>
+              <div id="term-wrapper" class="form-control">
+                <label for="term">Mortgage Term</label>
                 <div class="form-control-group static-border">
-                  <input type="text" id="amount" />
+                  <input type="text" id="term" />
                   <div class="form-control-group-icon static-bg">
                     <p>years</p>
                   </div>
                 </div>
+
+                <!-- error stage -->
+                <p class="error-message hidden">This field is required</p>
               </div>
 
-              <div class="form-control">
-                <label for="amount">Mortage Amount</label>
+              <div id="rate-wrapper" class="form-control">
+                <label for="rate">Interest Rate</label>
                 <div class="form-control-group static-border">
-                  <input type="text" id="amount" />
+                  <input type="text" id="rate" />
                   <div class="form-control-group-icon static-bg">
                     <i class="fa-solid fa-percent"></i>
                   </div>
                 </div>
+                <!-- error stage -->
+                <p class="error-message hidden">This field is required</p>
               </div>
             </div>
 
             <!-- mortage type -->
 
             <div class="mortage-type-wrapper">
-              <label for="">Mortage Type</label>
-              <div class="repayment-type active-border active-bg-payment">
-                <!-- <div class="checkbox active-bg">
+              <label for="">Mortgage Type</label>
+              <!-- activated -->
+              <div class="repayment-type static-border ">
+                <div class="checkbox">
                   <input type="radio">
-                </div> -->
-                <div class="active-checkbox">
+                </div>
+                <div class="active-checkbox hidden">
                   <div class="checkbox-circle active-bg"></div>
                   <input type="radio" />
                 </div>
                 <label class="type-label" for="repayment">Repayment</label>
               </div>
-              <div class="repayment-type active-border">
+
+              <!-- static -->
+              <div class="repayment-type static-border">
                 <div class="checkbox">
+                  <input type="radio" />
+                </div>
+                <div class="active-checkbox hidden">
+                  <div class="checkbox-circle active-bg"></div>
                   <input type="radio" />
                 </div>
                 <label class="type-label" for="repayment">Interest Only</label>
               </div>
-              <div class="interest-only"></div>
+              <!-- error stage -->
+              <p class="error-message hidden">This field is required</p>
             </div>
 
             <div>
-              <button class="calculate-repayments">
+              <button onclick="sendFormValues()" class="calculate-repayments">
                 <i class="fa-solid fa-calculator"></i>
                 Calculate Repayments
               </button>
@@ -96,7 +111,7 @@
         </figure>
 
         <figure class="results-section">
-          <figcaption class="static-result-section hidden">
+          <figcaption class="static-result-section">
             <div class="result-showcase">
               <img
                 class="result-img"
@@ -113,7 +128,7 @@
             </div>
           </figcaption>
 
-          <figcaption>
+          <figcaption class="hidden">
             <h2 class="result-title">Your results</h2>
             <p class="result-subtitle">
               Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet consectetur
@@ -136,5 +151,7 @@
         </figure>
       </main>
     </section>
+
+    <script src="./main.js"></script>
   </body>
 </html>

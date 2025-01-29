@@ -40,6 +40,7 @@
 
 .error-bg {
   background-color: var(--red) !important;
+  color: white !important;
 }
 
 .error-border {
@@ -48,6 +49,12 @@
 
 .hidden {
   display: none !important;
+}
+
+.error-message {
+  color: var(--red);
+  font-size: 13px;
+  margin-top: 7px;
 }
 
 label {
@@ -116,7 +123,7 @@ input:focus-within {
   background-color: transparent;
   text-decoration: underline;
   color: var(--slate-500);
-  font-size: 18px;
+  font-size: 15px;
   border: none;
   cursor: pointer;
   text-transform: capitalize;
@@ -136,13 +143,17 @@ input:focus-within {
 }
 
 .form-control-group {
-  margin-top: 13px;
+  margin-top: 10px;
   display: flex;
   height: 50px;
   width: 100%;
   border-radius: 5px;
-  box-shadow: 0px 5px 10px 2px rgba(40, 146, 228, 0.2);
+  box-shadow: 0px 2.5px 5px 1px rgba(40, 146, 228, 0.2);
+}
 
+.form-control-group:hover {
+  cursor: pointer;
+  box-shadow: 0px 5px 10px 2px rgba(40, 146, 228, 0.2);
 }
 
 .form-control-group-icon {
@@ -151,7 +162,7 @@ input:focus-within {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 5px 0 0 5px;
+  border-radius: 3px 0 0 3px;
   padding: 2px 5px;
   color: var(--slate-700);
 } 
@@ -173,6 +184,11 @@ input:focus-within {
   border-radius: 5px;
   padding: 2px 10px;
   margin-bottom: 10px;
+}
+
+.repayment-type:hover {
+  box-shadow: 2px 3px 4px rgba(255, 255, 255 , 0.9);
+  cursor: pointer;
 }
 
 .repayment-type input{
@@ -247,6 +263,7 @@ input:focus-within {
 
 .static-result-section {
   display: flex;
+  height: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -294,8 +311,7 @@ input:focus-within {
 
 
 
-
-
+/* MEDIA */
 @media (max-width: 767px) {
   .calculator-container {
     flex-direction: column;
@@ -310,3 +326,5 @@ input:focus-within {
     width: 100%;
   }
 }
+
+/* /MEDIA */
