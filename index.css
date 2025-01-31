@@ -145,7 +145,7 @@ input:focus-within {
 .form-control-group {
   margin-top: 10px;
   display: flex;
-  height: 50px;
+  height: 47px;
   width: 100%;
   border-radius: 5px;
   box-shadow: 0px 2.5px 5px 1px rgba(40, 146, 228, 0.2);

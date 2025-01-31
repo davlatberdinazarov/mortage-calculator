@@ -2,7 +2,6 @@
 let amountInput = document.getElementById("amount");
 let termInput = document.getElementById("term");
 let rateInput = document.getElementById("rate");
-let result = document.getElementById("result");
 
 // EVENT LISTENERS
 let calculateBtn = document.querySelector(".calculate-repayments");
@@ -10,10 +9,8 @@ let amountWrapper = document.querySelector("#amount-wrapper");
 let termWrapper = document.querySelector("#term-wrapper");
 let rateWrapper = document.querySelector("#rate-wrapper");
 let mortageTypeWrapper = document.querySelector(".mortage-type-wrapper");
-
-let mortgageTypes = mortageTypeWrapper.querySelectorAll(".repayment-type");
 let errorMsg = mortageTypeWrapper.querySelector(".error-message");
-
+let mortgageTypes = mortageTypeWrapper.querySelectorAll(".repayment-type");
 let purposeForShowValue = null; // 'interest' yoki 'payment'
 
 mortgageTypes.forEach((type) => {
@@ -45,21 +42,13 @@ mortgageTypes.forEach((type) => {
     // Qiymatni olish
     let label = type.querySelector(".type-label").textContent.trim();
     purposeForShowValue = label === "Repayment" ? "payment" : "interest";
-
-    // Xatolikni yashirish
-    errorMsg.classList.add("hidden");
-
-    console.log("Tanlangan tur:", purposeForShowValue);
   });
 });
 
-// Input faqat raqam qabul qilishi uchun validatsiya
 function validateInput(input) {
   let previousValue = input.value;
-
-  input.addEventListener("input", (e) => {
-    let inputValue = e.target.value;
-
+  input.addEventListener("input", (event) => {
+    let inputValue = event.target.value;
     if (!/^\d*\.?\d*$/.test(inputValue)) {
       input.value = previousValue;
     } else {
@@ -70,6 +59,24 @@ function validateInput(input) {
 
 // Uchta input uchun validatsiyani qo‘llash
 [amountInput, termInput, rateInput].forEach(validateInput);
+
+// Activated form groups
+function activeFormGroup(input, inputWrapper) {
+  let formControlEl = inputWrapper.querySelector(".form-control-group");
+  let formIcon = inputWrapper.querySelector(".form-control-group-icon");
+
+  input.addEventListener("focus", () => {
+    formControlEl.classList.add("active-border");
+    formControlEl.classList.remove("static-border");
+
+    formIcon.classList.add("active-bg");
+    formIcon.classList.remove("static-bg");
+  });
+}
+
+activeFormGroup(amountInput, amountWrapper);
+activeFormGroup(termInput, termWrapper);
+activeFormGroup(rateInput, rateWrapper);
 
 // Xatoliklarni ko'rsatish yoki yashirish funksiyasi
 function toggleError(inputWrapper, isError) {
@@ -87,14 +94,22 @@ function toggleError(inputWrapper, isError) {
     errorMsg.classList.remove("hidden");
   } else {
     formControlEl.classList.remove("error-border");
+    formControlEl.classList.remove("active-border");
     formControlEl.classList.add("static-border");
 
     formIcon.classList.remove("error-bg");
+    formIcon.classList.remove("active-bg");
     formIcon.classList.add("static-bg");
 
     errorMsg.classList.add("hidden");
   }
 }
+
+let activeSection = document.querySelector(".active-section");
+let staticSection = document.querySelector(".static-result-section");
+
+let monthlyPrice = activeSection.querySelector(".monthly-price");
+let totalPayment = activeSection.querySelector(".total-price");
 
 // Formni tekshirish funksiyasi
 function sendFormValues() {
@@ -102,6 +117,10 @@ function sendFormValues() {
   let isTermValid = termInput.value.trim() !== "";
   let isRateValid = rateInput.value.trim() !== "";
   let isPurposeValid = purposeForShowValue !== null;
+
+  let amount = Number(amountInput.value.trim());
+  let term = Number(termInput.value.trim());
+  let rate = Number(rateInput.value.trim());
 
   // Inputlarni tekshirish
   toggleError(amountWrapper, !isAmountValid);
@@ -116,19 +135,56 @@ function sendFormValues() {
     errorMsg.classList.add("hidden");
   }
 
-  // Barcha maydonlar to'g'ri bo'lsa, hisoblashni boshlash
+  // Javab berish
   if (isAmountValid && isTermValid && isRateValid && isPurposeValid) {
-    console.log("Form muvaffaqiyatli yuborildi!");
+    activeSection.classList.remove("hidden");
+    staticSection.classList.add("hidden");
+
+    monthlyPrice.textContent =
+      "£ " + findMortgagePrice(amount, term, rate).monthlyPayment;
+    totalPayment.textContent =
+      "£ " + findMortgagePrice(amount, term, rate).totalPayment;
+    // clearAll();
+  } else {
+    console.log("Forma is not submitted due to validation errors");
   }
 }
 
-// function calculateAmount() {
-//     let p = amountFunc(amount);
-//     let t = termFunc(term);
-//     let r = rateFunc(rate) / 100;
-//     let n = 12;
+function findMortgagePrice(amount, term, rate) {
+  let p = amount;
+  let t = term;
+  let r = rate / 100;
+  let n = 12;
 
-//     let Mp = ((p * (r/n))/(1 - (1 + r/n) ** ((-1) * n*t))).toFixed(2);
+  let Mp = ((p * (r / n)) / (1 - (1 + r / n) ** (-1 * n * t))).toFixed(2);
 
-//     let allPayment = parseFloat(Mp) * n * t
-// }
+  let allPayment = (parseFloat(Mp) * n * t).toFixed(2);
+
+  return {
+    monthlyPayment: textFormatter(Mp),
+    totalPayment: textFormatter(allPayment),
+  };
+}
+
+function textFormatter(number) {
+  let formattedNumber = number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return formattedNumber;
+}
+
+function clearAll() {
+  amountInput.value = "";
+  termInput.value = "";
+  rateInput.value = "";
+  let mortageTypes = mortageTypeWrapper.querySelectorAll(".repayment-type");
+  mortageTypes.forEach((type) => {
+    if (type.classList.contains("active-border")) {
+      console.log(type);
+      type.classList.remove("active-border", "active-bg-payment");
+      type.querySelector(".checkbox").classList.remove("hidden");
+      type.querySelector(".active-checkbox").classList.add("hidden");
+    }
+  });
+
+  activeSection.classList.add("hidden");
+  staticSection.classList.remove("hidden");
+}
